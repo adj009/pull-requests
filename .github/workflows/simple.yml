@@ -25,4 +25,4 @@ jobs:
       - name: pwsh commands
         shell: pwsh
         run: |
-          show-progress
+          show-processes
