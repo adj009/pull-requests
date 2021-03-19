@@ -1,15 +1,21 @@
 name: Shell commands
 
-on: [push]
+on:
+  - push
 
 jobs:
   run-shell-command:
     runs-on: ubuntu-20.04
     steps:
       - name: echo a string
-        run: eccho "Hello GitHub Actions!"
+        run: echo "Hello GitHub Actions!"
       - name: multiline script
         run: |
           node -v
           npm -v
           date
+      - name: python script
+        shell: python
+        run: |
+          import platform
+          print(platform.processor())
