@@ -21,8 +21,10 @@ jobs:
           print(platform.processor())
   windows-commands:
     runs-on: windows-latest
+    needs:
+      - run-shell-command
     steps:
       - name: pwsh commands
         shell: pwsh
         run: |
-          show-processes
+          get-process
