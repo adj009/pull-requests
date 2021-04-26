@@ -1,0 +1,30 @@
+version: 2.1
+
+jobs:
+  build-deploy:
+    docker:
+      - image: circleci/python:3.6.4
+    steps:
+      - run:
+          name: Analyse system resource utilization while build is running
+          command: |
+            cpu_a=(); mem_a=()
+            while true;
+            do mem_a+=(`free -m | grep "Mem:" | awk '{print $3}'`);
+            cpu_a+=(`top -b -n1 | grep "Cpu(s)" | awk '{print $2 + $4}'`);
+            printf "Mem- ${mem_a[*]}\nCPU- ${cpu_a[*]}\n";
+            sleep 5; done &
+      - run:
+          name: Install AWS CLI using pip
+          command: sudo pip3 install awscli --upgrade
+      - run:
+          name: Verify AWS CLI installation
+          command: aws --version
+workflows:
+  Build-And-Deploy:
+    jobs:
+      - build-deploy:
+          filters:
+            branches:
+              only:
+                - main
