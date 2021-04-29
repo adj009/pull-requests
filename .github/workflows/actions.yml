@@ -1,0 +1,13 @@
+name: Actions Workflow
+on : [push]
+jobs:
+  run-github-actions:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Simple JS Action
+        id: greet
+        uses: actions/hello-world-javascript-action@v1.1
+        with:
+          who-to-greet: "Abhinav"
+      - name: Log greet time
+        run: echo "{{ steps.greet.output.time }}"
