@@ -5,20 +5,7 @@ on:
       - master
       - develop
       # Starts with 'release/' 'hotfix/' 'feature/' 'bugfix/' 'support/' or 'revert-'
-      - release/**
-      - hotfix/**
-      - feature/**
-      - bugfix/**
-      - support/**
-      - revert/**
-      # Tags!
-      - /^\d+\.\d+\.\d+/
-  pull_request:
-    branches:
-      - master
-      - develop
-      # Starts with 'release/' 'hotfix/' 'feature/' 'bugfix/' 'support/' or 'revert-'
-      - /^(release\/|hotfix\/|feature\/|bugfix\/|support\/|revert-).*/
+      - [ 'release/**', 'hotfix/**', 'feature/**', 'bugfix/**', 'support/**', 'revert/**' ]
       # Tags!
       - /^\d+\.\d+\.\d+/
 jobs:
