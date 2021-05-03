@@ -8,6 +8,14 @@ on:
       - /^(release\/|hotfix\/|feature\/|bugfix\/|support\/|revert-).*/
       # Tags!
       - /^\d+\.\d+\.\d+/
+  pull_request:
+    branches:
+      - master
+      - develop
+      # Starts with 'release/' 'hotfix/' 'feature/' 'bugfix/' 'support/' or 'revert-'
+      - /^(release\/|hotfix\/|feature\/|bugfix\/|support\/|revert-).*/
+      # Tags!
+      - /^\d+\.\d+\.\d+/
 jobs:
   build:
     runs-on: ubuntu-20.04
